@@ -2,1069 +2,953 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#285646">
-  <meta name="description" content="PaRaJai Home Solutions LLC offers professional cleaning and personalized household assistance. Women-owned, with expertise spanning microbiology, healthcare, education, and household management.">
-  <title>PaRaJai Home Solutions LLC | The Science of Clean. The Art of Care.</title>
-  <style>
-    :root {
-      --green: #285646;
-      --dark: #234638;
-      --ink: #293b32;
-      --muted: #59695f;
-      --cream: #faf9f6;
-      --soft: #eaf0e8;
-      --line: #dce5db;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--cream);
-      color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    button, input, select, textarea { font: inherit; }
-    button { cursor: pointer; }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1200px; margin: auto; padding: 0 28px; }
-    .serif { font-family: Georgia, "Times New Roman", serif; }
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #698371;
-      text-transform: uppercase;
-    }
-    .section { padding: 70px 0; }
-    .section-title {
-      font-family: Georgia, serif;
-      font-size: clamp(30px, 3.8vw, 43px);
-      line-height: 1.15;
-      font-weight: normal;
-      margin: 12px 0 16px;
-    }
-    .section-intro {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 730px;
-      margin: 0 auto 35px;
-    }
-    .center { text-align: center; }
-    .btn {
-      display: inline-block;
-      padding: 13px 21px;
-      border-radius: 7px;
-      border: 1px solid var(--green);
-      background: var(--green);
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      transition: .2s;
-    }
-    .btn:hover { background: #1e4335; }
-    .btn-outline { background: white; color: var(--green); }
-    .btn-outline:hover { background: var(--soft); }
-
-    /* Header */
-    header {
-      background: white;
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      min-height: 83px;
-    }
-    .brand { display: flex; align-items: center; gap: 11px; }
-    .brand-icon {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      background: var(--green);
-      color: white;
-      border-radius: 9px;
-      font-size: 29px;
-    }
-    .brand-name { font: bold 21px Georgia, serif; }
-    .brand-sub { font-size: 10px; letter-spacing: 2px; color: #777; margin-top: 3px; }
-    nav { display: flex; align-items: center; gap: 27px; font-size: 13px; }
-    nav a:hover { color: #72917a; }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 490px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(90deg,
-          rgba(250,249,246,.99) 0%,
-          rgba(250,249,246,.94) 43%,
-          rgba(250,249,246,.18) 100%),
-        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=85")
-        center/cover no-repeat;
-    }
-    .hero-content { max-width: 700px; padding: 75px 0; }
-    .hero h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(39px, 5.5vw, 66px);
-      font-weight: normal;
-      line-height: 1.15;
-      margin: 19px 0 22px;
-      letter-spacing: -1.3px;
-    }
-    .hero h1 em {
-      display: block;
-      color: var(--green);
-      font-weight: normal;
-      margin-top: 4px;
-    }
-    .hero p {
-      max-width: 520px;
-      font-size: 15px;
-      line-height: 1.85;
-      color: #526258;
-      margin-bottom: 27px;
-    }
-    .hero-buttons { display: flex; flex-wrap: wrap; gap: 11px; }
-
-    /* Value strip */
-    .value-strip { background: var(--green); color: white; }
-    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .value-item { text-align: center; padding: 23px 15px; }
-    .value-item + .value-item { border-left: 1px solid rgba(255,255,255,.22); }
-    .value-symbol { font-size: 25px; margin-bottom: 8px; }
-    .value-item strong { display: block; font-size: 13px; }
-    .value-item span { display: block; font-size: 11px; opacity: .8; margin-top: 6px; }
-
-    /* Services */
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 21px; }
-    .service-card, .difference-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      overflow: hidden;
-    }
-    .service-card img { width: 100%; height: 190px; object-fit: cover; display: block; }
-    .service-body { padding: 23px; }
-    .service-card h3, .difference-card h3 {
-      font: normal 25px Georgia, serif;
-      margin: 12px 0;
-    }
-    .service-card p, .difference-card p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.85;
-    }
-    .service-link {
-      background: none;
-      border: none;
-      padding: 10px 0 0;
-      color: var(--green);
-      font-size: 13px;
-      font-weight: bold;
-      text-align: left;
-    }
-
-    /* Difference */
-    .difference { background: var(--soft); }
-    .difference-card { padding: 27px; }
-    .difference-icon { font-size: 28px; color: var(--green); }
-    .difference-card h3 { font-size: 23px; }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      align-items: center;
-      gap: 65px;
-    }
-    .about-copy p {
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-    .commitment {
-      padding: 30px;
-      border-radius: 14px;
-      background: #f1f4ee;
-      border: 1px solid var(--line);
-    }
-    .commitment h3 { font: normal 27px Georgia, serif; }
-    .commitment-item { margin: 20px 0; }
-    .commitment-item strong { font-size: 14px; }
-    .commitment-item p {
-      font-size: 12px;
-      line-height: 1.6;
-      color: var(--muted);
-      margin: 6px 0 0 22px;
-    }
-
-    /* Booking */
-    .booking { background: white; }
-    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .booking-panel {
-      padding: 25px;
-      background: #fafbf9;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-    }
-    .booking-panel h3 { margin: 0 0 23px; font-size: 16px; }
-    label {
-      display: block;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 7px;
-    }
-    input, select, textarea {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #d7e0d9;
-      background: white;
-      border-radius: 7px;
-      font-size: 13px;
-      color: var(--ink);
-    }
-    textarea { resize: vertical; }
-    .field-group { margin-bottom: 19px; }
-    .info {
-      padding: 14px;
-      border-radius: 8px;
-      background: var(--soft);
-      color: #315b48;
-      font-size: 12px;
-      line-height: 1.7;
-      margin-top: 20px;
-    }
-    .calendar-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 19px;
-    }
-    .calendar-top strong { font: bold 20px Georgia, serif; }
-    .calendar-nav {
-      border: 1px solid var(--line);
-      background: white;
-      color: var(--green);
-      padding: 8px 14px;
-      border-radius: 7px;
-    }
-    .calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-    }
-    .weekday { font-size: 11px; text-align: center; color: #777; padding-bottom: 10px; }
-    .day {
-      border: 0;
-      border-radius: 7px;
-      padding: 11px 0;
-      color: var(--green);
-      background: var(--soft);
-      font-size: 12px;
-    }
-    .day:disabled { background: #f1f1ee; color: #aaa; cursor: not-allowed; }
-    .day.selected { background: var(--green); color: white; }
-    .slots-heading {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: 25px;
-      font-size: 12px;
-    }
-    .slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 13px; }
-    .slot {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 10px 3px;
-      font-size: 11px;
-    }
-    .slot:disabled {
-      background: #f1f1ee;
-      color: #aaa;
-      text-decoration: line-through;
-      cursor: not-allowed;
-    }
-    .slot.selected { background: var(--green); color: white; }
-    .contact-panel { margin-top: 22px; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .reserve-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 22px;
-    }
-    .reserve-note { font-size: 12px; color: #777; }
-    .message { margin-top: 17px; font-size: 13px; line-height: 1.6; }
-
-    /* Footer */
-    footer { background: var(--dark); color: white; padding: 43px 0 20px; }
-    .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
-    .footer-brand { font: bold 25px Georgia, serif; }
-    .footer-tagline { font: italic 17px Georgia, serif; margin-top: 11px; }
-    .footer-small { font-size: 12px; opacity: .78; line-height: 1.8; }
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,.2);
-      padding-top: 19px;
-      margin-top: 30px;
-      font-size: 11px;
-      opacity: .65;
-    }
-
-    @media(max-width:850px) {
-      nav { display: none; }
-      .cards, .about-grid, .booking-grid { grid-template-columns: 1fr; }
-      .about-grid { gap: 25px; }
-      .hero { background-position: center; }
-    }
-    @media(max-width:550px) {
-      .container { padding: 0 17px; }
-      .section { padding: 48px 0; }
-      .nav { min-height: 72px; }
-      .brand-name { font-size: 16px; }
-      .brand-icon { width: 35px; height: 35px; }
-      .nav > .btn { padding: 10px; font-size: 11px; }
-      .hero { min-height: 460px; background-position: 63% center; }
-      .hero h1 { font-size: 39px; }
-      .value-item { padding: 17px 6px; }
-      .value-item strong { font-size: 11px; }
-      .value-item span { font-size: 10px; }
-      .slots { grid-template-columns: repeat(3, 1fr); }
-      .contact-grid { grid-template-columns: 1fr; }
-      .booking-panel { padding: 17px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaRaS Home Solutions LLC | The Science of Clean. The Art of Care.</title>
+<meta name="description" content="PaRaS Home Solutions LLC provides professional home cleaning and personalized household assistance.">
+<style>
+:root {
+  --green:#285646; --dark:#234638; --ink:#293b32;
+  --muted:#627369; --cream:#faf9f6; --soft:#eaf0e8;
+  --line:#dce5dd;
+}
+* { box-sizing:border-box }
+html { scroll-behavior:smooth }
+body { margin:0; background:var(--cream); color:var(--ink); font:14px Arial,sans-serif }
+button,input,select,textarea { font:inherit }
+button { cursor:pointer }
+a { color:inherit; text-decoration:none }
+.wrap { max-width:1170px; margin:auto; padding:0 22px }
+h1,h2,h3,.serif { font-family:Georgia,serif; font-weight:normal }
+h1 { font-size:clamp(38px,5vw,65px); line-height:1.13; margin:17px 0 }
+h2 { font-size:clamp(29px,3.5vw,41px); margin:10px 0 17px }
+h3 { font-size:24px; margin:10px 0 }
+.ey { color:#729078; letter-spacing:1.8px; font-size:11px; font-weight:bold }
+.muted { color:var(--muted); line-height:1.8 }
+.small { font-size:12px }
+.center { text-align:center }
+.section { padding:60px 0 }
+.btn {
+  background:var(--green); color:white; border:1px solid var(--green);
+  border-radius:7px; padding:12px 17px; font-size:12px;
+  font-weight:bold; display:inline-block;
+}
+.btn.alt { background:white; color:var(--green) }
+.btn:disabled { opacity:.4; cursor:not-allowed }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:19px }
+.card,.panel {
+  background:white; border:1px solid var(--line);
+  border-radius:12px; padding:23px;
+}
+.card p { font-size:13px; line-height:1.8; color:var(--muted) }
+.hidden { display:none!important }
+.row { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap }
+.demo {
+  background:#fff4d8; padding:10px 15px; text-align:center;
+  color:#6e5522; font-size:11px;
+}
+header { position:sticky; top:0; z-index:20; background:white; border-bottom:1px solid var(--line) }
+.header-inner { min-height:76px; display:flex; justify-content:space-between; align-items:center; gap:14px }
+.brand { display:flex; align-items:center; gap:11px }
+.brand-icon { background:var(--green); color:white; width:42px; height:42px; border-radius:9px; display:grid; place-items:center; font-size:26px }
+.brand strong { font:700 21px Georgia,serif }
+.brand small { display:block; font-size:9px; letter-spacing:1px; color:var(--muted); margin-top:4px }
+.links { display:flex; gap:20px; font-size:12px }
+.hero {
+  min-height:450px; display:flex; align-items:center;
+  background:
+    linear-gradient(90deg,rgba(250,249,246,.99),rgba(250,249,246,.9) 48%,rgba(250,249,246,.12)),
+    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=85") center/cover;
+}
+.hero .copy { max-width:650px; padding:65px 0 }
+.hero em { display:block; color:var(--green) }
+.hero p { max-width:520px; font-size:15px }
+.features { background:var(--green); color:white }
+.feature-grid { display:grid; grid-template-columns:repeat(3,1fr); text-align:center }
+.feature-grid div { padding:24px 10px; font-size:13px }
+.feature-grid span { display:block; font-size:24px; margin-bottom:7px }
+.service-img { width:100%; height:185px; object-fit:cover; border-radius:8px }
+.difference { background:var(--soft) }
+.about-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center }
+.about-grid p { line-height:1.85; color:var(--muted) }
+.booking { background:white }
+.booking-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px }
+.panel { background:#fbfcfa }
+.panel h3 { font:700 15px Arial,sans-serif; margin:0 0 20px }
+.field { margin-bottom:15px }
+label { display:block; font-size:12px; font-weight:bold; margin-bottom:6px }
+input:not([type=checkbox]),select,textarea {
+  width:100%; border:1px solid #d6e1d8; background:white;
+  border-radius:7px; padding:11px; color:var(--ink);
+}
+textarea { resize:vertical }
+.calendar { display:grid; grid-template-columns:repeat(7,1fr); gap:5px }
+.weekday { text-align:center; font-size:11px; color:#777; padding:7px 0 }
+.day,.slot {
+  border:1px solid var(--line); background:var(--soft);
+  color:var(--green); border-radius:6px; padding:10px 0; font-size:12px;
+}
+.day.selected,.slot.selected { background:var(--green); color:white }
+.day:disabled,.slot:disabled { background:#f1f1ef; color:#aaa; cursor:not-allowed }
+.slots { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin-top:12px }
+.slot { background:white; padding:10px 3px }
+.notice { background:var(--soft); border-radius:8px; padding:12px; font-size:12px; line-height:1.7; margin-top:16px }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px }
+.admin { background:#f5f7f4; min-height:650px }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:20px 0 }
+.stat { background:white; border:1px solid var(--line); border-radius:10px; padding:18px }
+.stat b { display:block; font:30px Georgia,serif; margin-top:8px }
+.admin-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:20px }
+.job {
+  width:100%; display:block; text-align:left; background:white;
+  border:1px solid var(--line); border-radius:9px; padding:13px; margin-bottom:10px;
+}
+.job.active { border-color:var(--green); background:var(--soft) }
+.job small { display:block; color:var(--muted); margin-top:7px; line-height:1.5 }
+.actions { display:grid; grid-template-columns:1fr 1fr; gap:9px }
+.actions .wide { grid-column:span 2 }
+.sms-log { display:flex; flex-direction:column; gap:8px; max-height:240px; overflow:auto; margin:15px 0 }
+.bubble { max-width:90%; padding:11px; border-radius:10px; background:var(--soft); font-size:12px; line-height:1.6; align-self:flex-start }
+.bubble.customer { background:var(--green); color:white; align-self:flex-end }
+.footer { background:var(--dark); color:white; padding:40px 0 }
+.footer p { font-size:12px; opacity:.8 }
+@media(max-width:950px) {
+  .links { display:none }
+  .about-grid,.booking-grid,.admin-grid { grid-template-columns:1fr }
+}
+@media(max-width:650px) {
+  .wrap { padding:0 15px }
+  .header-inner { flex-wrap:wrap; padding:12px 0 }
+  .brand strong { font-size:17px }
+  .grid3,.contact-grid { grid-template-columns:1fr }
+  .section { padding:43px 0 }
+  .hero h1 { font-size:40px }
+  .feature-grid div { font-size:11px; padding:18px 5px }
+  .panel { padding:16px }
+  .slots { grid-template-columns:repeat(3,1fr) }
+  .stats { grid-template-columns:repeat(2,1fr) }
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
-      <a href="#home" class="brand">
-        <div class="brand-icon">⌂</div>
-        <div>
-          <div class="brand-name">PaRaJai Home Solutions</div>
-          <div class="brand-sub">LLC · WOMEN-OWNED</div>
-        </div>
-      </a>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#difference">The PaRaJai Difference</a>
-        <a href="#about">About Us</a>
-      </nav>
-      <a href="#booking" class="btn">Book a Service</a>
+<div class="demo">
+  <strong>INTERACTIVE DEMONSTRATION:</strong>
+  No real reservations, SMS messages, payments, or crew dispatch.
+  Information is not saved to a shared database.
+</div>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#home" class="brand" id="brand-link">
+      <div class="brand-icon">⌂</div>
+      <div>
+        <strong>PaRaS Home Solutions</strong>
+        <small>LLC · THE SCIENCE OF CLEAN. THE ART OF CARE.</small>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#difference">The PaRaS Difference</a>
+      <a href="#about">About Us</a>
+      <a href="#booking">Book</a>
+    </nav>
+    <div class="row">
+      <button class="btn" id="customer-tab">Customer Website</button>
+      <button class="btn alt" id="admin-tab">Admin Demo</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container" style="width:100%">
-        <div class="hero-content">
-          <div class="eyebrow">WOMEN-OWNED · PREMIUM HOME CLEANING & HOUSEHOLD SERVICES</div>
-          <h1>The Science of Clean.<em>The Art of Care.</em></h1>
-          <p>
-            Professional home cleaning and personalized household assistance,
-            combining exceptional service standards with carefully developed
-            cleaning solutions and a commitment to healthier living spaces.
-          </p>
-          <div class="hero-buttons">
-            <a href="#booking" class="btn">Schedule Your Cleaning →</a>
-            <a href="#services" class="btn btn-outline">Explore Our Services</a>
-          </div>
+<main id="customer-view">
+  <section id="home" class="hero">
+    <div class="wrap" style="width:100%">
+      <div class="copy">
+        <div class="ey">WOMEN-OWNED · PREMIUM HOME CLEANING & HOUSEHOLD SERVICES</div>
+        <h1>The Science of Clean.<em>The Art of Care.</em></h1>
+        <p class="muted">
+          Professional home cleaning and personalized household assistance,
+          combining exceptional service standards with carefully developed
+          cleaning solutions and a commitment to healthier living spaces.
+        </p>
+        <div class="row" style="justify-content:flex-start">
+          <a class="btn" href="#booking">Schedule Your Cleaning →</a>
+          <a class="btn alt" href="#services">Explore Services</a>
         </div>
-      </div>
-    </section>
-
-    <section class="value-strip">
-      <div class="container value-grid">
-        <div class="value-item">
-          <div class="value-symbol">✧</div>
-          <strong>Professional Cleaning Standards</strong>
-          <span>Detailed, consistent service</span>
-        </div>
-        <div class="value-item">
-          <div class="value-symbol">♧</div>
-          <strong>Carefully Developed Solutions</strong>
-          <span>Thoughtful ingredient selection</span>
-        </div>
-        <div class="value-item">
-          <div class="value-symbol">♡</div>
-          <strong>Personalized Household Services</strong>
-          <span>Tailored to your home</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="center">
-          <div class="eyebrow">OUR SERVICES</div>
-          <h2 class="section-title">Comprehensive Home Care</h2>
-          <p class="section-intro">
-            Professional cleaning and flexible household support designed
-            around your needs.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="service-card">
-            <img
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=85"
-              alt="Professional routine home cleaning"
-              loading="lazy"
-            >
-            <div class="service-body">
-              <div class="eyebrow">01 · MAINTENANCE</div>
-              <h3>Routine Cleaning</h3>
-              <p>
-                Reliable scheduled cleaning for kitchens, bathrooms,
-                living spaces, floors, dusting, and frequently touched surfaces.
-              </p>
-              <button class="service-link" data-service="Routine Cleaning">
-                Schedule routine cleaning →
-              </button>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img
-              src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=85"
-              alt="Beautifully maintained home interior"
-              loading="lazy"
-            >
-            <div class="service-body">
-              <div class="eyebrow">02 · COMPREHENSIVE</div>
-              <h3>Deep Cleaning</h3>
-              <p>
-                Thorough cleaning of high-use areas, fixtures,
-                accumulated buildup, and spaces requiring additional attention.
-              </p>
-              <button class="service-link" data-service="Deep Cleaning">
-                Schedule deep cleaning →
-              </button>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img
-              src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=700&q=85"
-              alt="Organized and comfortable living space"
-              loading="lazy"
-            >
-            <div class="service-body">
-              <div class="eyebrow">03 · FLEXIBLE SUPPORT</div>
-              <h3>Hourly Home Assistance</h3>
-              <p>
-                Customized hourly support for targeted cleaning,
-                organization, decluttering, and other household priorities.
-              </p>
-              <button class="service-link" data-service="Hourly Home Assistance">
-                Schedule hourly assistance →
-              </button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section difference" id="difference">
-      <div class="container">
-        <div class="center">
-          <div class="eyebrow">WHY CHOOSE PaRaJai HOME SOLUTIONS</div>
-          <h2 class="section-title">The PaRaJai Difference</h2>
-          <p class="section-intro">
-            Exceptional cleaning begins with expertise, attention to detail,
-            and the products we choose. Our approach combines professional
-            cleaning standards with a thoughtful understanding of household
-            hygiene and chemical safety.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="difference-card">
-            <div class="difference-icon">✧</div>
-            <h3>Advanced Cleaning Standards</h3>
-            <p>
-              Our cleaning methods focus on thorough surface care,
-              effective removal of everyday contaminants, and particular
-              attention to frequently touched areas throughout your home.
-            </p>
-          </article>
-
-          <article class="difference-card">
-            <div class="difference-icon">♧</div>
-            <h3>Thoughtfully Developed Cleaning Solutions</h3>
-            <p>
-              We prioritize proprietary cleaning solutions formulated with
-              carefully selected ingredients, emphasizing effectiveness,
-              environmental responsibility, and reduced exposure to
-              potentially harmful chemicals.
-            </p>
-          </article>
-
-          <article class="difference-card">
-            <div class="difference-icon">◎</div>
-            <h3>Expertise Beyond Traditional Cleaning</h3>
-            <p>
-              Our foundation in microbiology, biomedical research, and
-              healthcare brings a deeper understanding of hygiene, product
-              safety, and the importance of maintaining clean,
-              well-cared-for living environments.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div class="about-copy">
-          <div class="eyebrow">ABOUT US</div>
-          <h2 class="section-title">
-            Professional Expertise.<br>Personalized Home Care.
-          </h2>
-
-          <p>
-            PaRaJai Home Solutions LLC is a women-owned business founded by
-            professionals with backgrounds in microbiology, education,
-            and household management. This unique combination of expertise
-            allows us to approach home care with the precision of scientific
-            disciplines, the organization of experienced educators, and the
-            practical understanding of everyday household needs.
-          </p>
-
-          <p>
-            Our professional foundation extends into biomedical and oncology
-            research, bringing valuable perspectives on hygiene, chemical
-            exposure, and the careful evaluation of cleaning products.
-          </p>
-
-          <p>
-            We believe exceptional home care should go beyond routine
-            housekeeping. From detailed cleaning services to flexible
-            household assistance, we are committed to providing reliable,
-            personalized solutions with an emphasis on quality, consistency,
-            and customer satisfaction.
-          </p>
-        </div>
-
-        <aside class="commitment">
-          <div class="eyebrow">OUR SERVICE COMMITMENT</div>
-          <h3>A Thoughtful Approach to Every Home.</h3>
-
-          <div class="commitment-item">
-            <strong>✓ Professional Expertise</strong>
-            <p>
-              Research, healthcare, education, and household
-              management perspectives.
-            </p>
-          </div>
-
-          <div class="commitment-item">
-            <strong>✓ Carefully Evaluated Products</strong>
-            <p>
-              Emphasis on effective cleaning and responsible
-              ingredient selection.
-            </p>
-          </div>
-
-          <div class="commitment-item">
-            <strong>✓ Consistent Service Standards</strong>
-            <p>
-              Structured cleaning practices and attention to detail.
-            </p>
-          </div>
-
-          <div class="commitment-item">
-            <strong>✓ Personalized Household Support</strong>
-            <p>
-              Services adapted to individual home care requirements.
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section booking" id="booking">
-      <div class="container">
-        <div class="center">
-          <div class="eyebrow">ONLINE SCHEDULING</div>
-          <h2 class="section-title">Reserve Your Appointment</h2>
-          <p class="section-intro">
-            Choose a service, select your preferred date,
-            and reserve an available time.
-          </p>
-        </div>
-
-        <div class="booking-grid">
-          <div class="booking-panel">
-            <h3>1. Service Preferences</h3>
-
-            <div class="field-group">
-              <label for="service">Service type</label>
-              <select id="service">
-                <option>Routine Cleaning</option>
-                <option>Deep Cleaning</option>
-                <option>Hourly Home Assistance</option>
-              </select>
-            </div>
-
-            <div class="field-group">
-              <label for="duration">Duration</label>
-              <select id="duration">
-                <option value="120">2 hours</option>
-                <option value="180">3 hours</option>
-                <option value="240">4 hours</option>
-                <option value="300">5 hours</option>
-                <option value="360">6 hours</option>
-              </select>
-            </div>
-
-            <div class="field-group">
-              <label for="frequency">Frequency</label>
-              <select id="frequency">
-                <option>One-time</option>
-                <option>Weekly</option>
-                <option>Biweekly</option>
-                <option>Monthly</option>
-              </select>
-            </div>
-
-            <div class="field-group">
-              <label for="homeSize">Home size</label>
-              <select id="homeSize">
-                <option>Apartment / Condo</option>
-                <option selected>2–3 bedrooms</option>
-                <option>4+ bedrooms</option>
-                <option>Other / Custom</option>
-              </select>
-            </div>
-
-            <div class="field-group">
-              <label for="notes">Additional instructions</label>
-              <textarea
-                id="notes"
-                rows="4"
-                placeholder="Specific cleaning tasks, organization requests, product preferences, etc."
-              ></textarea>
-            </div>
-
-            <div class="info">
-              <strong>Scheduling allowance:</strong>
-              Every appointment includes a 15-minute buffer before
-              and after the service to accommodate travel between locations.
-            </div>
-          </div>
-
-          <div class="booking-panel">
-            <h3>2. Select Your Appointment</h3>
-
-            <div class="calendar-top">
-              <button class="calendar-nav" id="prevMonth" aria-label="Previous month">‹</button>
-              <strong id="monthLabel"></strong>
-              <button class="calendar-nav" id="nextMonth" aria-label="Next month">›</button>
-            </div>
-
-            <div class="calendar" id="calendar"></div>
-
-            <div class="slots-heading">
-              <strong>Available Start Times</strong>
-              <span id="selectedDateLabel"></span>
-            </div>
-
-            <div class="slots" id="slots"></div>
-
-            <div class="info" id="bookingSummary">
-              Select a time to see the full reservation window,
-              including travel buffers.
-            </div>
-          </div>
-        </div>
-
-        <div class="booking-panel contact-panel">
-          <h3>3. Contact Details</h3>
-
-          <div class="contact-grid">
-            <div>
-              <label for="customerName">Full name</label>
-              <input id="customerName" autocomplete="name" placeholder="Your name">
-            </div>
-            <div>
-              <label for="customerEmail">Email address</label>
-              <input id="customerEmail" type="email" autocomplete="email" placeholder="you@example.com">
-            </div>
-            <div>
-              <label for="customerPhone">Phone number</label>
-              <input id="customerPhone" type="tel" autocomplete="tel" placeholder="(555) 555-0123">
-            </div>
-            <div>
-              <label for="customerZip">ZIP code</label>
-              <input id="customerZip" inputmode="numeric" autocomplete="postal-code" placeholder="Service ZIP code">
-            </div>
-          </div>
-
-          <div class="reserve-row">
-            <span class="reserve-note">Scheduling preview · No payment collected</span>
-            <button class="btn" id="reserveButton">Reserve Appointment →</button>
-          </div>
-
-          <div class="message" id="bookingMessage" role="status" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand">PaRaJai Home Solutions LLC</div>
-          <div class="footer-tagline">The Science of Clean. The Art of Care.</div>
-          <p class="footer-small">
-            Women-Owned · Professional Home Cleaning & Household Services
-          </p>
-        </div>
-
-        <div class="footer-small">
-          <strong>Our Services</strong>
-          <p>Routine Cleaning · Deep Cleaning</p>
-          <p>Hourly Home Assistance</p>
-          <p>Contact information and service areas to be added</p>
-        </div>
-      </div>
-
-      <div class="copyright">
-        © <span id="year"></span> PaRaJai Home Solutions LLC. All rights reserved.
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    /*
-      FRONT-END BOOKING PREVIEW
+  <div class="features">
+    <div class="wrap feature-grid">
+      <div><span>✧</span><strong>Professional Cleaning Standards</strong></div>
+      <div><span>♧</span><strong>Carefully Developed Solutions</strong></div>
+      <div><span>♡</span><strong>Personalized Household Services</strong></div>
+    </div>
+  </div>
 
-      This calendar is interactive but does not create real bookings.
-      Appointments exist only in this browser tab until it is refreshed.
-      Simulated occupied appointments are included for demonstration.
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="center">
+        <div class="ey">OUR SERVICES</div>
+        <h2>Comprehensive Home Care</h2>
+        <p class="muted">Professional cleaning and flexible household support designed around your needs.</p>
+      </div>
+      <div class="grid3">
+        <article class="card">
+          <img class="service-img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=85" alt="Professional home cleaning">
+          <div class="ey" style="margin-top:18px">01 · MAINTENANCE</div>
+          <h3>Routine Cleaning</h3>
+          <p>Reliable scheduled cleaning for kitchens, bathrooms, living spaces, floors, dusting, and frequently touched surfaces.</p>
+          <button class="btn alt service-pick" data-service="Routine Cleaning">Schedule Routine Cleaning →</button>
+        </article>
+        <article class="card">
+          <img class="service-img" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=85" alt="Beautiful home interior">
+          <div class="ey" style="margin-top:18px">02 · COMPREHENSIVE</div>
+          <h3>Deep Cleaning</h3>
+          <p>Thorough cleaning of high-use areas, fixtures, accumulated buildup, and spaces requiring additional attention.</p>
+          <button class="btn alt service-pick" data-service="Deep Cleaning">Schedule Deep Cleaning →</button>
+        </article>
+        <article class="card">
+          <img class="service-img" src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=700&q=85" alt="Organized living space">
+          <div class="ey" style="margin-top:18px">03 · FLEXIBLE SUPPORT</div>
+          <h3>Hourly Home Assistance</h3>
+          <p>Customized hourly support for targeted cleaning, organization, decluttering, and other household priorities.</p>
+          <button class="btn alt service-pick" data-service="Hourly Home Assistance">Schedule Assistance →</button>
+        </article>
+      </div>
+    </div>
+  </section>
 
-      A shared booking backend or scheduling service is required
-      before accepting real customer reservations.
-    */
+  <section class="section difference" id="difference">
+    <div class="wrap">
+      <div class="center">
+        <div class="ey">WHY CHOOSE PARAS HOME SOLUTIONS</div>
+        <h2>The PaRaS Difference</h2>
+        <p class="muted" style="max-width:740px;margin:0 auto 28px">
+          Exceptional cleaning begins with expertise, attention to detail,
+          and the products we choose. Our approach combines professional
+          cleaning standards with a thoughtful understanding of household
+          hygiene and chemical safety.
+        </p>
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <h3>Advanced Cleaning Standards</h3>
+          <p>Our cleaning methods focus on thorough surface care, effective removal of everyday contaminants, and particular attention to frequently touched areas throughout your home.</p>
+        </div>
+        <div class="card">
+          <h3>Thoughtfully Developed Cleaning Solutions</h3>
+          <p>We prioritize proprietary cleaning solutions formulated with carefully selected ingredients, emphasizing effectiveness, environmental responsibility, and reduced exposure to potentially harmful chemicals.</p>
+        </div>
+        <div class="card">
+          <h3>Expertise Beyond Traditional Cleaning</h3>
+          <p>Our foundation in microbiology, biomedical research, and healthcare brings a deeper understanding of hygiene, product safety, and the importance of maintaining clean, well-cared-for living environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const $ = id => document.getElementById(id);
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="ey">ABOUT US</div>
+        <h2>Professional Expertise.<br>Personalized Home Care.</h2>
+        <p>PaRaS Home Solutions LLC is a women-owned business founded by professionals with backgrounds in microbiology, education, and household management. This unique combination of expertise allows us to approach home care with the precision of scientific disciplines, the organization of experienced educators, and the practical understanding of everyday household needs.</p>
+        <p>Our professional foundation extends into biomedical and oncology research, bringing valuable perspectives on hygiene, chemical exposure, and the careful evaluation of cleaning products.</p>
+        <p>We believe exceptional home care should go beyond routine housekeeping. From detailed cleaning services to flexible household assistance, we are committed to providing reliable, personalized solutions with an emphasis on quality, consistency, and customer satisfaction.</p>
+      </div>
+      <div class="card" style="background:var(--soft)">
+        <div class="ey">OUR SERVICE COMMITMENT</div>
+        <h3>A Thoughtful Approach to Every Home</h3>
+        <p>✓ Professional expertise</p>
+        <p>✓ Carefully evaluated cleaning products</p>
+        <p>✓ Consistent service standards</p>
+        <p>✓ Personalized household support</p>
+        <p>✓ Appointment confirmation before crew dispatch</p>
+      </div>
+    </div>
+  </section>
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+  <section class="section booking" id="booking">
+    <div class="wrap">
+      <div class="center">
+        <div class="ey">ONLINE SCHEDULING</div>
+        <h2>Reserve Your Appointment</h2>
+        <p class="muted">Select your service, preferred date, and appointment time.</p>
+      </div>
 
-    let displayedMonth = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      1
+      <div class="booking-grid">
+        <div class="panel">
+          <h3>1. Service Preferences</h3>
+          <div class="field">
+            <label for="service">Service Type</label>
+            <select id="service">
+              <option>Routine Cleaning</option>
+              <option>Deep Cleaning</option>
+              <option>Hourly Home Assistance</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="duration">Duration</label>
+            <select id="duration">
+              <option value="120">2 hours</option>
+              <option value="180">3 hours</option>
+              <option value="240">4 hours</option>
+              <option value="300">5 hours</option>
+              <option value="360">6 hours</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="frequency">Frequency</label>
+            <select id="frequency">
+              <option>One-time</option>
+              <option>Weekly</option>
+              <option>Biweekly</option>
+              <option>Monthly</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="home-size">Home Size</label>
+            <select id="home-size">
+              <option>Apartment / Condo</option>
+              <option selected>2–3 bedrooms</option>
+              <option>4+ bedrooms</option>
+              <option>Other / Custom</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="notes">Special Instructions</label>
+            <textarea id="notes" rows="4" placeholder="Cleaning priorities, pets, access instructions, etc."></textarea>
+          </div>
+          <div class="notice">Appointments include a 15-minute travel buffer before and after service.</div>
+        </div>
+
+        <div class="panel">
+          <h3>2. Select Date & Time</h3>
+          <div class="row" style="margin-bottom:15px">
+            <button class="btn alt" id="prev">‹</button>
+            <strong id="month-label" class="serif" style="font-size:20px"></strong>
+            <button class="btn alt" id="next">›</button>
+          </div>
+          <div id="calendar" class="calendar"></div>
+          <div class="row" style="margin-top:22px">
+            <strong class="small">Available Start Times</strong>
+            <span class="small muted" id="date-label"></span>
+          </div>
+          <div class="slots" id="slots"></div>
+          <div class="notice" id="window-label">Select an appointment time.</div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:20px">
+        <h3>3. Customer Details & Payment Preference</h3>
+        <div class="contact-grid">
+          <div><label for="name">Full Name</label><input id="name" autocomplete="name" placeholder="Your name"></div>
+          <div><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+          <div><label for="phone">Mobile Number</label><input id="phone" type="tel" autocomplete="tel" placeholder="(555) 555-0123"></div>
+          <div><label for="zip">ZIP Code</label><input id="zip" autocomplete="postal-code" placeholder="Service ZIP code"></div>
+        </div>
+        <div class="field" style="margin-top:17px">
+          <label for="payment">Payment Preference</label>
+          <select id="payment">
+            <option value="after">Pay after service</option>
+            <option value="deposit">Deposit — simulated $25</option>
+            <option value="full">Full payment — simulation only</option>
+          </select>
+          <p class="small muted">No payment information is collected and no charges are made in this demonstration.</p>
+        </div>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-weight:normal;line-height:1.6">
+          <input type="checkbox" id="sms-consent" style="margin-top:3px">
+          <span>I agree to receive appointment-related text messages from PaRaS Home Solutions, including confirmation requests and service updates. Message and data rates may apply. Reply STOP to opt out.</span>
+        </label>
+        <div class="row" style="margin-top:20px">
+          <span class="small muted">Customer confirmation is required before crew dispatch.</span>
+          <button class="btn" id="reserve">Reserve Appointment →</button>
+        </div>
+        <div class="small" id="booking-msg" role="status" style="margin-top:14px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section difference">
+    <div class="wrap">
+      <div class="ey">CUSTOMER SELF-SERVICE</div>
+      <h2>Manage Your Appointment</h2>
+      <p class="muted small">In this demo, you can manage the latest appointment created during this browser session.</p>
+      <div class="card row">
+        <span id="manage-info" class="small">No appointment created yet.</span>
+        <div class="row">
+          <button class="btn alt" id="reschedule">Reschedule</button>
+          <button class="btn alt" id="cancel">Cancel Appointment</button>
+        </div>
+      </div>
+      <p id="manage-msg" class="small muted"></p>
+    </div>
+  </section>
+</main>
+
+<main id="admin-view" class="admin hidden">
+  <div class="wrap section">
+    <div class="row">
+      <div>
+        <div class="ey">INTERNAL OPERATIONS · SIMULATION</div>
+        <h2>Scheduling & Dispatch Dashboard</h2>
+        <p class="muted small">Manage bookings, simulated SMS confirmations, crew assignments, and dispatch readiness.</p>
+      </div>
+      <button class="btn alt" id="reset">Reset Demo Data</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="small muted">Total Bookings</span><b id="stat-total">0</b></div>
+      <div class="stat"><span class="small muted">Awaiting Response</span><b id="stat-pending">0</b></div>
+      <div class="stat"><span class="small muted">Confirmed</span><b id="stat-confirmed">0</b></div>
+      <div class="stat"><span class="small muted">Dispatch Holds</span><b id="stat-hold">0</b></div>
+    </div>
+
+    <div class="admin-grid">
+      <div class="panel">
+        <h3>Appointments</h3>
+        <div id="job-list"></div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <div class="ey">SELECTED APPOINTMENT</div>
+          <h2 id="job-title" style="font-size:24px">Select a Booking</h2>
+          <p class="small muted" id="job-detail"></p>
+
+          <div class="field">
+            <label for="crew">Assigned Cleaning Crew</label>
+            <select id="crew">
+              <option value="">Unassigned</option>
+              <option>Crew 1 — Anna & Mia</option>
+              <option>Crew 2 — Priya & Emily</option>
+              <option>Crew 3 — Sofia & Grace</option>
+            </select>
+          </div>
+
+          <div class="actions">
+            <button class="btn alt" id="assign">Assign Crew</button>
+            <button class="btn alt" id="send-sms">Send 3-Hour SMS</button>
+            <button class="btn wide" id="dispatch">Authorize Crew Dispatch</button>
+          </div>
+          <p id="admin-msg" class="small muted"></p>
+        </div>
+
+        <div class="panel" style="margin-top:18px">
+          <div class="ey">SMS CONVERSATION SIMULATOR</div>
+          <div class="sms-log" id="sms-log"></div>
+          <div class="row" style="justify-content:flex-start">
+            <button class="btn" id="reply-yes">Customer Replies YES</button>
+            <button class="btn alt" id="reply-no">Customer Replies NO</button>
+          </div>
+          <p class="small muted">SMS replies are simulated. No actual text messages are sent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Dispatch policy:</strong> Crew dispatch requires customer confirmation
+      and an assigned crew. A NO response or no response blocks dispatch.
+      In the future live system, confirmation reminders will be scheduled
+      three hours before service, with a configurable confirmation cutoff.
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="serif" style="font-size:25px">PaRaS Home Solutions LLC</div>
+    <p class="serif" style="font-style:italic;font-size:17px">The Science of Clean. The Art of Care.</p>
+    <p>Women-Owned · Professional Home Cleaning & Household Services</p>
+    <p style="margin-top:25px;border-top:1px solid #ffffff33;padding-top:15px">
+      © <span id="year"></span> PaRaS Home Solutions LLC. All rights reserved.
+    </p>
+    <p>Demo website — no real bookings, payments, SMS, or crew dispatch.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  function dateKey(d) {
+    return d.getFullYear() + "-" +
+      String(d.getMonth()+1).padStart(2,"0") + "-" +
+      String(d.getDate()).padStart(2,"0");
+  }
+
+  function future(n) {
+    const d = new Date(today);
+    d.setDate(d.getDate()+n);
+    return dateKey(d);
+  }
+
+  function fmt(minutes) {
+    const h = Math.floor(minutes/60);
+    return (h%12||12) + ":" +
+      String(minutes%60).padStart(2,"0") +
+      (h<12?" AM":" PM");
+  }
+
+  function sampleJobs() {
+    return [
+      {
+        id:1,date:future(1),start:540,end:660,
+        name:"Customer A",service:"Routine Cleaning",
+        crew:"Crew 1 — Anna & Mia",
+        status:"confirmed",dispatched:false,
+        payment:"Pay after service",demo:true,
+        sms:[
+          {from:"system",text:"Please reply YES to confirm your cleaning appointment."},
+          {from:"customer",text:"YES"}
+        ]
+      },
+      {
+        id:2,date:future(1),start:780,end:900,
+        name:"Customer B",service:"Deep Cleaning",
+        crew:"Crew 2 — Priya & Emily",
+        status:"pending",dispatched:false,
+        payment:"Deposit selected (simulation)",demo:true,sms:[]
+      },
+      {
+        id:3,date:future(2),start:600,end:720,
+        name:"Customer C",service:"Routine Cleaning",
+        crew:"",status:"hold",dispatched:false,
+        payment:"Pay after service",demo:true,
+        sms:[
+          {from:"system",text:"Please confirm your appointment."},
+          {from:"customer",text:"NO"}
+        ]
+      }
+    ];
+  }
+
+  let jobs = sampleJobs();
+  let nextId = 4;
+  let selectedJob = 1;
+  let selectedDate = dateKey(today);
+  let selectedTime = null;
+  let month = new Date(today.getFullYear(),today.getMonth(),1);
+
+  const duration = () => Number($("duration").value);
+
+  function available(day,start) {
+    return !jobs.some(j =>
+      j.status !== "cancelled" &&
+      j.date === day &&
+      start < j.end+15 &&
+      start+duration() > j.start-15
     );
+  }
 
-    let selectedDate = null;
-    let selectedTime = null;
-    const reservations = [];
+  function show(view) {
+    $("customer-view").classList.toggle("hidden",view!=="customer");
+    $("admin-view").classList.toggle("hidden",view!=="admin");
+    $("customer-tab").className = "btn"+(view==="customer"?"":" alt");
+    $("admin-tab").className = "btn"+(view==="admin"?"":" alt");
+    if(view==="admin") renderAdmin();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
 
-    const dateKey = date => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const day = String(date.getDate()).padStart(2, "0");
-      return `${year}-${month}-${day}`;
-    };
+  $("customer-tab").onclick = () => show("customer");
+  $("admin-tab").onclick = () => show("admin");
+  $("brand-link").onclick = () => show("customer");
 
-    const duration = () => Number($("duration").value);
+  function renderCalendar() {
+    const g = $("calendar");
+    g.innerHTML = "";
 
-    function formatTime(minutes) {
-      const hour = Math.floor(minutes / 60);
-      const minute = String(minutes % 60).padStart(2, "0");
-      return `${hour % 12 || 12}:${minute} ${hour < 12 ? "AM" : "PM"}`;
+    $("month-label").textContent = month.toLocaleDateString("en-US",{
+      month:"long",year:"numeric"
+    });
+
+    ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].forEach(t => {
+      const x = document.createElement("div");
+      x.className = "weekday";
+      x.textContent = t;
+      g.appendChild(x);
+    });
+
+    const offset = new Date(month.getFullYear(),month.getMonth(),1).getDay();
+    for(let i=0;i<offset;i++) g.appendChild(document.createElement("span"));
+
+    const count = new Date(month.getFullYear(),month.getMonth()+1,0).getDate();
+
+    for(let i=1;i<=count;i++) {
+      const d = new Date(month.getFullYear(),month.getMonth(),i);
+      const k = dateKey(d);
+      const b = document.createElement("button");
+
+      b.type = "button";
+      b.className = "day"+(selectedDate===k?" selected":"");
+      b.textContent = i;
+      b.disabled = d<today || (d-today)/86400000>60;
+
+      b.onclick = () => {
+        selectedDate=k;
+        selectedTime=null;
+        renderCalendar();
+        renderSlots();
+      };
+
+      g.appendChild(b);
     }
+  }
 
-    function occupiedAppointments(day) {
-      const difference = Math.round(
-        (new Date(day + "T12:00:00") - today) / 86400000
-      );
+  function renderSlots() {
+    const g = $("slots");
+    g.innerHTML = "";
+    $("date-label").textContent = selectedDate||"";
 
-      // Example appointments to illustrate unavailable times.
-      const examples = difference >= 0 && difference < 14
-        ? [{
-            start: difference % 2 ? 780 : 600,
-            end: difference % 2 ? 900 : 720
-          }]
-        : [];
-
-      return examples.concat(
-        reservations.filter(item => item.date === day)
-      );
-    }
-
-    function isAvailable(day, start) {
-      const end = start + duration();
-
-      return !occupiedAppointments(day).some(item => {
-        const blockedStart = item.start - 15;
-        const blockedEnd = item.end + 15;
-
-        return start < blockedEnd && end > blockedStart;
-      });
-    }
-
-    function renderCalendar() {
-      $("monthLabel").textContent = displayedMonth.toLocaleDateString(
-        "en-US",
-        { month: "long", year: "numeric" }
-      );
-
-      const calendar = $("calendar");
-      calendar.innerHTML = "";
-
-      ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        .forEach(name => {
-          const cell = document.createElement("div");
-          cell.className = "weekday";
-          cell.textContent = name;
-          calendar.appendChild(cell);
-        });
-
-      const firstWeekday = new Date(
-        displayedMonth.getFullYear(),
-        displayedMonth.getMonth(),
-        1
-      ).getDay();
-
-      const daysInMonth = new Date(
-        displayedMonth.getFullYear(),
-        displayedMonth.getMonth() + 1,
-        0
-      ).getDate();
-
-      for (let i = 0; i < firstWeekday; i++) {
-        calendar.appendChild(document.createElement("span"));
-      }
-
-      for (let day = 1; day <= daysInMonth; day++) {
-        const date = new Date(
-          displayedMonth.getFullYear(),
-          displayedMonth.getMonth(),
-          day
-        );
-
-        const key = dateKey(date);
-        const button = document.createElement("button");
-
-        button.className = "day";
-        button.textContent = day;
-        button.type = "button";
-
-        const daysAhead = (date - today) / 86400000;
-        button.disabled = daysAhead < 0 || daysAhead > 60;
-
-        if (selectedDate === key) {
-          button.classList.add("selected");
-        }
-
-        button.addEventListener("click", () => {
-          selectedDate = key;
-          selectedTime = null;
-          renderCalendar();
-          renderSlots();
-        });
-
-        calendar.appendChild(button);
-      }
-    }
-
-    function renderSlots() {
-      const slots = $("slots");
-      slots.innerHTML = "";
-
-      $("selectedDateLabel").textContent = selectedDate
-        ? new Date(selectedDate + "T12:00:00").toLocaleDateString(
-            "en-US",
-            { weekday: "short", month: "short", day: "numeric" }
-          )
-        : "";
-
-      if (!selectedDate) {
-        $("bookingSummary").textContent =
-          "Choose an appointment date to see available times.";
-        return;
-      }
-
-      // Service hours: 9 AM to 5 PM.
-      // Start times are offered every 30 minutes.
-      for (let start = 540; start + duration() <= 1020; start += 30) {
-        const button = document.createElement("button");
-
-        button.type = "button";
-        button.className = "slot";
-        button.textContent = formatTime(start);
+    if(selectedDate) {
+      for(let s=540;s+duration()<=1020;s+=30) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "slot"+(selectedTime===s?" selected":"");
+        b.textContent = fmt(s);
 
         const now = new Date();
-        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+        const past = selectedDate===dateKey(today) &&
+          s<=now.getHours()*60+now.getMinutes();
 
-        const pastTime =
-          selectedDate === dateKey(today) &&
-          start <= currentMinutes;
+        b.disabled = !available(selectedDate,s)||past;
 
-        button.disabled = !isAvailable(selectedDate, start) || pastTime;
-
-        if (selectedTime === start) {
-          button.classList.add("selected");
-        }
-
-        button.addEventListener("click", () => {
-          selectedTime = start;
+        b.onclick = () => {
+          selectedTime=s;
           renderSlots();
-        });
+        };
 
-        slots.appendChild(button);
-      }
-
-      if (selectedTime === null) {
-        $("bookingSummary").textContent =
-          "Select a time to see the full reservation window, including travel buffers.";
-      } else {
-        $("bookingSummary").textContent =
-          `Service: ${formatTime(selectedTime)}–` +
-          `${formatTime(selectedTime + duration())}. ` +
-          `Reserved calendar window: ${formatTime(selectedTime - 15)}–` +
-          `${formatTime(selectedTime + duration() + 15)} ` +
-          `(including travel buffers).`;
+        g.appendChild(b);
       }
     }
 
-    $("prevMonth").addEventListener("click", () => {
-      const previous = new Date(
-        displayedMonth.getFullYear(),
-        displayedMonth.getMonth() - 1,
-        1
-      );
+    $("window-label").textContent = selectedTime===null
+      ? "Select an appointment time."
+      : "Service: "+fmt(selectedTime)+"–"+fmt(selectedTime+duration())+
+        ". Including travel buffers: "+fmt(selectedTime-15)+"–"+
+        fmt(selectedTime+duration()+15)+".";
+  }
 
-      const currentMonth = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        1
-      );
-
-      if (previous >= currentMonth) {
-        displayedMonth = previous;
-        renderCalendar();
-      }
-    });
-
-    $("nextMonth").addEventListener("click", () => {
-      displayedMonth = new Date(
-        displayedMonth.getFullYear(),
-        displayedMonth.getMonth() + 1,
-        1
-      );
-
+  $("prev").onclick = () => {
+    const p = new Date(month.getFullYear(),month.getMonth()-1,1);
+    if(p>=new Date(today.getFullYear(),today.getMonth(),1)) {
+      month=p;
       renderCalendar();
+    }
+  };
+
+  $("next").onclick = () => {
+    const n = new Date(month.getFullYear(),month.getMonth()+1,1);
+    if(n<=new Date(today.getFullYear(),today.getMonth()+2,1)) {
+      month=n;
+      renderCalendar();
+    }
+  };
+
+  $("duration").onchange = () => {
+    selectedTime=null;
+    renderSlots();
+  };
+
+  $("service").onchange = () => {
+    $("duration").value = $("service").value==="Deep Cleaning"?"240":"120";
+    selectedTime=null;
+    renderSlots();
+  };
+
+  document.querySelectorAll(".service-pick").forEach(b => {
+    b.onclick = () => {
+      $("service").value=b.dataset.service;
+      $("service").dispatchEvent(new Event("change"));
+      $("booking").scrollIntoView({behavior:"smooth"});
+    };
+  });
+
+  function statusLabel(j) {
+    return {
+      confirmed:"Confirmed",
+      pending:"Awaiting reply",
+      hold:"On hold",
+      cancelled:"Cancelled"
+    }[j.status]||j.status;
+  }
+
+  function currentCustomerJob() {
+    return jobs.filter(j=>!j.demo&&j.status!=="cancelled").at(-1);
+  }
+
+  function manage() {
+    const j = currentCustomerJob();
+
+    $("manage-info").textContent = j
+      ? "#"+j.id+" · "+j.name+" · "+j.date+
+        " at "+fmt(j.start)+" · "+statusLabel(j)
+      : "No active appointment created in this session.";
+
+    $("reschedule").disabled=!j;
+    $("cancel").disabled=!j;
+    return j;
+  }
+
+  $("reserve").onclick = () => {
+    const msg = $("booking-msg");
+    const name = $("name").value.trim();
+    const email = $("email").value.trim();
+    const phone = $("phone").value.trim();
+    const zip = $("zip").value.trim();
+
+    if(!selectedDate||selectedTime===null) {
+      msg.textContent="Please select a date and time.";
+      msg.style.color="#a33";
+      return;
+    }
+
+    if(!name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||
+       !phone||!zip||!$("sms-consent").checked) {
+      msg.textContent="Complete contact details and SMS consent.";
+      msg.style.color="#a33";
+      return;
+    }
+
+    if(!available(selectedDate,selectedTime)) {
+      msg.textContent="This time is unavailable.";
+      msg.style.color="#a33";
+      return;
+    }
+
+    const payment=$("payment").value;
+
+    const j={
+      id:nextId++,
+      date:selectedDate,
+      start:selectedTime,
+      end:selectedTime+duration(),
+      name,
+      service:$("service").value,
+      phone,
+      crew:"",
+      status:"pending",
+      dispatched:false,
+      payment:payment==="deposit"
+        ? "$25 deposit selected (not charged)"
+        :payment==="full"
+        ? "Full payment selected (not charged)"
+        :"Pay after service",
+      sms:[{
+        from:"system",
+        text:"Demo booking created for "+selectedDate+
+          " at "+fmt(selectedTime)+
+          ". A confirmation request would be sent before the appointment."
+      }],
+      demo:false
+    };
+
+    jobs.push(j);
+    selectedJob=j.id;
+
+    msg.style.color="var(--green)";
+    msg.textContent="Demo appointment #"+j.id+
+      " created. No real reservation, payment, or SMS was submitted.";
+
+    selectedTime=null;
+    renderSlots();
+    manage();
+  };
+
+  $("cancel").onclick = () => {
+    const j=manage();
+    if(!j)return;
+    j.status="cancelled";
+    j.dispatched=false;
+    $("manage-msg").textContent="Demo appointment cancelled.";
+    manage();
+    renderSlots();
+  };
+
+  $("reschedule").onclick = () => {
+    const j=manage();
+    if(!j)return;
+    j.status="cancelled";
+    j.dispatched=false;
+    $("service").value=j.service;
+    $("service").dispatchEvent(new Event("change"));
+    $("manage-msg").textContent=
+      "Original demo appointment released. Select a new time and book again.";
+    manage();
+    renderSlots();
+    $("booking").scrollIntoView({behavior:"smooth"});
+  };
+
+  function current() {
+    return jobs.find(j=>j.id===selectedJob);
+  }
+
+  function renderAdmin() {
+    const active=jobs.filter(j=>j.status!=="cancelled");
+
+    $("stat-total").textContent=active.length;
+    $("stat-pending").textContent=active.filter(j=>j.status==="pending").length;
+    $("stat-confirmed").textContent=active.filter(j=>j.status==="confirmed").length;
+    $("stat-hold").textContent=active.filter(j=>j.status==="hold").length;
+
+    const list=$("job-list");
+    list.innerHTML="";
+
+    jobs.forEach(j=>{
+      const b=document.createElement("button");
+      b.className="job"+(selectedJob===j.id?" active":"");
+
+      const title=document.createElement("b");
+      title.textContent="#"+j.id+" · "+j.name+" · "+j.date+" "+fmt(j.start);
+
+      const detail=document.createElement("small");
+      detail.textContent=j.service+" · "+statusLabel(j)+" · "+
+        (j.dispatched?"Dispatch authorized":
+        j.status==="confirmed"&&j.crew?"Eligible for dispatch":"Dispatch blocked");
+
+      b.append(title,detail);
+      b.onclick=()=>{
+        selectedJob=j.id;
+        renderAdmin();
+      };
+      list.appendChild(b);
     });
 
-    $("duration").addEventListener("change", () => {
-      selectedTime = null;
-      renderSlots();
+    const j=current()||jobs[0];
+    if(!j)return;
+
+    selectedJob=j.id;
+    $("job-title").textContent="#"+j.id+" · "+j.name;
+    $("job-detail").textContent=
+      j.date+" · "+fmt(j.start)+"–"+fmt(j.end)+" · "+
+      j.service+" · "+statusLabel(j)+" · "+j.payment;
+
+    $("crew").value=j.crew;
+    $("assign").disabled=j.status==="cancelled";
+    $("send-sms").disabled=j.status==="cancelled";
+    $("reply-yes").disabled=j.status==="cancelled";
+    $("reply-no").disabled=j.status==="cancelled";
+
+    $("dispatch").disabled=
+      j.status!=="confirmed"||!j.crew||j.dispatched;
+
+    $("dispatch").textContent=j.dispatched
+      ?"Crew Dispatch Authorized ✓"
+      :"Authorize Crew Dispatch";
+
+    const log=$("sms-log");
+    log.innerHTML="";
+
+    if(!j.sms.length) {
+      const p=document.createElement("p");
+      p.className="small muted";
+      p.textContent="No simulated SMS messages yet.";
+      log.appendChild(p);
+    }
+
+    j.sms.forEach(m=>{
+      const d=document.createElement("div");
+      d.className="bubble"+(m.from==="customer"?" customer":"");
+      d.textContent=m.text;
+      log.appendChild(d);
+    });
+  }
+
+  function notice(text) {
+    $("admin-msg").textContent=text;
+  }
+
+  $("assign").onclick = () => {
+    const j=current();
+    if(!j)return;
+    j.crew=$("crew").value;
+    j.dispatched=false;
+    notice(j.crew
+      ?"Crew assigned: "+j.crew+". No real notification sent."
+      :"Crew assignment cleared.");
+    renderAdmin();
+  };
+
+  $("send-sms").onclick = () => {
+    const j=current();
+    if(!j)return;
+
+    j.sms.push({
+      from:"system",
+      text:"PaRaS Home Solutions: Your appointment is "+j.date+
+        " at "+fmt(j.start)+
+        ". Reply YES to confirm our crew should come or NO if you cannot proceed. Reply STOP to opt out."
     });
 
-    $("service").addEventListener("change", () => {
-      $("duration").value =
-        $("service").value === "Deep Cleaning" ? "240" : "120";
+    j.status="pending";
+    j.dispatched=false;
+    notice("Three-hour confirmation SMS simulated. No real text sent.");
+    renderAdmin();
+  };
 
-      selectedTime = null;
-      renderSlots();
-    });
+  $("reply-yes").onclick = () => {
+    const j=current();
+    if(!j)return;
 
-    document.querySelectorAll("[data-service]").forEach(button => {
-      button.addEventListener("click", () => {
-        $("service").value = button.dataset.service;
-        $("service").dispatchEvent(new Event("change"));
+    j.sms.push(
+      {from:"customer",text:"YES"},
+      {from:"system",text:"Thank you. Your appointment is confirmed."}
+    );
 
-        $("booking").scrollIntoView({
-          behavior: "smooth"
-        });
-      });
-    });
+    j.status="confirmed";
+    j.dispatched=false;
+    notice("Customer confirmed. Assign a crew before dispatch.");
+    renderAdmin();
+  };
 
-    $("reserveButton").addEventListener("click", () => {
-      const message = $("bookingMessage");
+  $("reply-no").onclick = () => {
+    const j=current();
+    if(!j)return;
 
-      if (!selectedDate || selectedTime === null) {
-        message.style.color = "#a33";
-        message.textContent =
-          "Please select an available appointment date and time.";
-        return;
-      }
+    j.sms.push(
+      {from:"customer",text:"NO"},
+      {from:"system",text:"Your visit is on hold. Our office will follow up."}
+    );
 
-      const name = $("customerName").value.trim();
-      const email = $("customerEmail").value.trim();
-      const phone = $("customerPhone").value.trim();
-      const zip = $("customerZip").value.trim();
+    j.status="hold";
+    j.dispatched=false;
+    notice("Customer declined. Dispatch blocked.");
+    renderAdmin();
+  };
 
-      if (!name || !email || !phone || !zip) {
-        message.style.color = "#a33";
-        message.textContent =
-          "Please enter your name, email, phone number, and ZIP code.";
-        return;
-      }
+  $("dispatch").onclick = () => {
+    const j=current();
+    if(!j||j.status!=="confirmed"||!j.crew)return;
 
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        message.style.color = "#a33";
-        message.textContent = "Please enter a valid email address.";
-        return;
-      }
+    j.dispatched=true;
+    notice("Dispatch authorized in demo for "+j.crew+
+      ". No real crew notification sent.");
+    renderAdmin();
+  };
 
-      if (!isAvailable(selectedDate, selectedTime)) {
-        message.style.color = "#a33";
-        message.textContent =
-          "This appointment is no longer available. Please choose another time.";
-        return;
-      }
-
-      const start = selectedTime;
-      const end = start + duration();
-
-      reservations.push({
-        date: selectedDate,
-        start,
-        end,
-        service: $("service").value,
-        name
-      });
-
-      message.style.color = "#285646";
-      message.textContent =
-        `Appointment selected for ${selectedDate}, ` +
-        `${formatTime(start)}–${formatTime(end)}. ` +
-        `This is a scheduling preview only. ` +
-        `No actual reservation has been submitted or confirmed.`;
-
-      selectedTime = null;
-      renderSlots();
-    });
-
-    $("year").textContent = new Date().getFullYear();
-
-    selectedDate = dateKey(today);
+  $("reset").onclick = () => {
+    jobs=sampleJobs();
+    nextId=4;
+    selectedJob=1;
+    selectedTime=null;
+    notice("Demo records reset.");
+    renderAdmin();
+    manage();
     renderCalendar();
     renderSlots();
-  </script>
+  };
+
+  $("year").textContent=new Date().getFullYear();
+  renderCalendar();
+  renderSlots();
+  manage();
+})();
+</script>
+
 </body>
 </html>
